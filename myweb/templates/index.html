@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Img generates content</h1>
+<p>The website is developed using the Flask framework and integrated with Bootstrap for front-end design.</p>
+    <h2>Welcome to my website</h2>
+    <p>
+    This website is dedicated to providing easy-to-use visual tools to help beginners without coding experience to experience AI generation.
+    </p>
+    <p>
+    Here, we offer two technologies: text-to-image and image-to-image generation, which can be accessed through the following links.
+    </p>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-6 d-flex">
+            <div class="card flex-grow-1">
+                <div class="card-body text-center">
+                    <a href="{{ url_for('img2img') }}">img2img</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 d-flex">
+            <div class="card flex-grow-1">
+                <div class="card-body text-center">
+                    <a href="{{ url_for('img2text') }}">img2text</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <h2>
+    Description
+    </h2>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-6 d-flex">
+            <div class="card flex-grow-1">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center align-items-center" style="border-bottom:1px solid #ccc; padding:20px; height:50%">
+                            Img to Text
+                        </div>
+                        <div class="col-12 text" style="padding:20px;">
+                            <p>
+                                One can obtain an image by providing a URL or uploading a file.
+                                Users have the option to ask a question or provide a prompt in order to receive the desired content.
+                                Additionally, the prompt field can be left empty if desired.
+
+                            </p>
+                        </div>
+                        <div class="col-12 text" style="padding:20px;">
+                            <p>
+                                We use the pre-trained model BLIP from Hugging Face, which can be accessed through the link :<a
+                                href="https://huggingface.co/Salesforce/blip2-opt-2.7b/tree/main"> Salesforce/blip2-opt-2.7b
+                            </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 d-flex">
+            <div class="card flex-grow-1">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center align-items-center" style="border-bottom:1px solid #ccc; padding:20px; height:50%">
+
+                           Img to Img
+                        </div>
+                        <div class="col-12 text" style="padding:20px;">
+                            <p>
+                                By providing a URL or uploading a file, users can obtain an image.
+                                They can then use prompts to generate the desired image.
+                                However, please make sure not to leave the prompt field empty
+                            </p>
+                        </div>
+                        <div class="col-12 text" style="padding:20px;">
+                            <p>
+                                We use the pre-trained model stable-diffusion from Hugging Face, which can be accessed through the link :<a
+                                href="https://huggingface.co/stabilityai/stable-diffusion-2/tree/main"> stabilityai/stable-diffusion-2
+                            </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
