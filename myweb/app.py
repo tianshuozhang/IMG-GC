@@ -32,24 +32,30 @@ csrf = CSRFProtect(app)
 def index():
     return render_template('index.html')
 
-@app.route('/img2img')
+@app.route('/img2img',methods=['GET', 'POST'])
 def img2img():
-    return render_template('img2img.html',form=Img2imgForm())
+    form =Img2imgForm()
+    if form.validate_on_submit():
+        return "123"
+    return render_template('img2img.html',form=form)
 
-@app.route('/img2text')
+@app.route('/img2text',methods=['GET', 'POST'])
 def img2text():
-    return render_template('img2text.html',form=Img2textForm())
+    form = Img2textForm()
+    if form.validate_on_submit():
+        return "123"
+    return render_template('img2text.html',form=form)
 
 class Img2imgForm(FlaskForm):
     url = URLField()
-    image = FileField(render_kw={'class': 'my-class'}, validators=[Regexp('.+\.jpg$')])  # add your class
+    image = FileField(render_kw={'class': 'my-class'})  # add your class
     select = SelectField(choices=[('url_load', 'url_load'), ('image_load', 'image_load')])
     Prompt = TextAreaField(validators=[DataRequired()])
     submit = SubmitField()
 
 class Img2textForm(FlaskForm):
     url = URLField()
-    image = FileField(render_kw={'class': 'my-class'}, validators=[Regexp('.+\.jpg$')])  # add your class
+    image = FileField(render_kw={'class': 'my-class'})  # add your class
     select = SelectField(choices=[('url_load', 'url_load'), ('image_load', 'image_load')])
     Prompt = TextAreaField()
     Question = TextAreaField()
