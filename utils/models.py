@@ -2,7 +2,7 @@ from transformers import Blip2Processor, Blip2ForConditionalGeneration
 import torch
 from peft import LoraConfig, get_peft_model
 from torch.utils.data import DataLoader
-from dataset import ImageCaptioningDataset
+# from dataset import ImageCaptioningDataset
 from tqdm import tqdm
 
 def get_processor_and_model(processorpath="Salesforce/blip2-opt-2.7b",modelpath="Salesforce/blip2-opt-2.7b",device_map="auto"):

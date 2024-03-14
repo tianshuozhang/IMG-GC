@@ -1,0 +1,62 @@
+{% extends 'base.html' %}`·
+{% block title %}My Page{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">My Page</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <!--图像显示-->
+            {% if select == "image_load" %}
+                <img src="{{ url_for('static', filename=image_name) }}" class="img-fluid" alt="Responsive image">
+            {% else %}
+                <img src="{{ image_name }}" class="img-fluid" alt="Responsive image">
+            {% endif %}
+        </div>
+        <div class="col-md-6">
+            {% if choice == "prompt" %}
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h4>prompt</h4>
+                        <p class="lead">{{question}}</p>
+                    </div>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h4>text</h4>
+                        <p class="lead">{{ answer }}</p>
+                    </div>
+                </div>
+            {% else %}
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h4>question</h4>
+                        <p class="lead">{{question}}</p>
+                    </div>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h4>answer</h4>
+                        <p class="lead">{{ answer }}</p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
