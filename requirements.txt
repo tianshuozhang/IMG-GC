@@ -1,0 +1,9 @@
+diffusers
+transformers
+accelerate
+scipy
+safetensors
+bootstrap-flask
+peft
+wtforms
+flask_wtf
