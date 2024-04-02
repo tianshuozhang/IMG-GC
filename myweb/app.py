@@ -1,16 +1,23 @@
 # -*- coding: utf-8 -*-
 from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_wtf import FlaskForm, CSRFProtect
+import torch
 from wtforms.validators import DataRequired, Length, Regexp
 from wtforms.fields import *
 from flask_bootstrap import Bootstrap5, SwitchField
-from utils.get_input import *
-from utils.models import *
 from diffusers import StableDiffusionImg2ImgPipeline
 from wtforms.validators import Optional
 import shutil
 import os
 import threading
+import sys
+current_path = os.getcwd()
+sys.path.append(current_path)
+
+from utils.get_input import get_input,get_img
+from utils.models import get_processor_and_model,lora_fit
+
+
 app = Flask(__name__)
 app.secret_key = 'dev'
 
@@ -32,6 +39,8 @@ csrf = CSRFProtect(app)
 processor = None
 model_bilp = None
 pipe=None
+
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -133,3 +142,6 @@ def load_pipe():
         torch.cuda.empty_cache()
     pipe = StableDiffusionImg2ImgPipeline.from_pretrained(model_path, torch_dtype=torch.float16, revision="fp16", use_auth_token=True , device_map='sequential')
     # pipe = StableDiffusionImg2ImgPipeline.from_pretrained(model_path,  use_auth_token=True)
+
+if __name__ == '__main__':
+    app.run()
